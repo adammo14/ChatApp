@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MyProject</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/theme.css">
+</head>
+
+<body>
+
+  <section id="sideMenu">
+
+    <div class="navbar-left logo">
+      <a href="/">
+        <img src="/images/logoV2.png">
+      </a>
+    </div>
+
+    <nav id="dash-nav">
+      {{#compare user.gender "==" "male"}}
+        <img src="/images/avatar-man.png" class="avatar">
+      {{/compare}}
+
+      {{#compare user.gender "==" "female"}}
+        <img src="/images/avatar-woman.png" class="avatar">
+      {{/compare}}
+
+      <h4 class="text-center greeting">Hello {{user.username}}!</h4>
+
+      <a href="/dashboard/{{user.id}}" class="active"><i class="fa fa-user"></i> Personal Information</a>
+      <a href="/dashboard2/{{user.id}}"><i class="fa fa-puzzle-piece"></i> Matching Preferences</a>
+      <a href="/dashboard3/{{user.id}}"><i class="fa fa-wrench"></i> Website Settings</a>
+    </nav>
+  </section>
+
+  <header>
+    <div class="user-area">
+      <a type="button" data-toggle="modal" data-target=".bd-example-modal-sm" href="#" class="notification"><i class="fa fa-bell"></i><span class="circle">1</span></a>
+      <a href="/" class="close-btn"><i class="fa fa-window-close"></i></a>
+    </div>
+  </header>
+
+  <section id="content-area">
+    <div class="heading">
+      <h1>Dashboard</h1>
+      <p>Welcome to Personality Chat dashboard</p>
+    </div>
+
+    <div class="card">
+      <div class="">
+        <form role="form" method="POST" action="/dashboard/{{user._id}}">
+
+          <!-- Gender -->
+          <p>You are a...</p>
+          <input type="radio" id="male" value="male" name="gender" required/>
+          <label for="male">Male</label><br>
+          <input type="radio" id="female" value="female" name="gender" required/>
+          <label for="female">Female</label>
+
+          <!-- Age -->
+          <p>Who is...</p>
+          <input type="radio" id="<18" value="<18" name="age"/>
+          <label for="<18">Under 18 years old</label><br>
+          <input type="radio" id="18-21" value="18-21" name="age"/>
+          <label for="18-21">18 - 21 years old</label><br>
+          <input type="radio" id="22-26" value="22-26" name="age"/>
+          <label for="22-26">22 - 26 years old</label><br>
+          <input type="radio" id="27-35" value="27-35" name="age"/>
+          <label for="27-35">27 - 35 years old</label><br>
+          <input type="radio" id=">35" value=">36" name="age"/>
+          <label for=">35">Over 35 years old</label><br>
+
+          <!-- Image -->
+          <p>Do you want to upload your photo?</p>
+          <input type='file' onchange="readURL(this);"/>
+          <img id="blah" src="#"/>
+
+          <div class="dash-btn">
+            <button type="submit" class="btn btn-success">APPLY CHANGES</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="position:absolute; top:60px; right:10px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">You have a new match!</h5>
+          <div class="open-chat">
+            <a href="/"><button type="button" class="btn btn-success">Open Chat</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/js/helpers.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>

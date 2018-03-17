@@ -1,0 +1,238 @@
+*{
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Dash1 */
+
+#content-area{
+  margin-left: 648px;
+  margin-right: 274px;
+  margin-bottom: 20px;
+  margin-top: 60px;
+}
+
+.heading{
+  color: #878787;
+}
+
+.heading h1{
+  color: #878787;
+}
+
+.card{
+  min-width: 900px;
+  min-height: 300px;
+  background: #F7F7F7;
+  border-radius: 5px;
+}
+
+.card h1{
+  padding-top: 20px;
+}
+
+.card .fa{
+  color: #575757;
+}
+
+.card h2{
+  margin-top: 60px;
+}
+
+.avatar{
+  width: 90%;
+  margin-left: 5%;
+}
+
+hr.gradient-style {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0));
+}
+
+form{
+  font-size: 18px;
+  padding: 20px 20px;
+}
+
+form p{
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin: 10px 0;
+}
+
+.dash-btn{
+  margin-top: 20px;
+}
+
+.open-chat{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-dialog .modal-sm{
+  position: absolute;
+  top: 85px;
+  right: 10px;
+  z-index: 10040;
+  overflow: auto;
+  overflow-y: auto;
+}
+
+hr.style-one {
+		text-align: center;
+		margin: 0 auto;
+    border: 0;
+    height: 1px;
+    margin: 20px 0px;
+    background: #343838;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+/* Dash2 GOES HERE !!! */
+#test-title{
+  font-size: 28px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  color:
+}
+
+.holder{
+  display: inline-block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.holder input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.holder:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.holder input:checked ~ .checkmark {
+    background-color: #00B012;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.holder input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.holder .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+/* Dash3 */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input{
+  display:none;
+}
+
+/* The slider */
+.slider{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before{
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider{
+  background-color: #00B012;
+}
+
+input:focus + .slider{
+  box-shadow: 0 0 1px #00B012;
+}
+
+input:checked + .slider:before{
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Tooltip container */
+.tool-tip{
+    position: relative;
+}
+
+/* Tooltip text */
+.tool-tip .tool-tip-text{
+    visibility: hidden;
+    max-width: 400px;
+    font-size: 12px;
+    background-color: black;
+    opacity: 0.3;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+
+.tool-tip:hover .tool-tip-text {
+    visibility: visible;
+}

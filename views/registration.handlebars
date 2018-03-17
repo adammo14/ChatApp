@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MyProject</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/theme.css">
+</head>
+
+<body>
+  <nav class="navbar" id="my-navbar">
+
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-left">
+                <a href="/">
+                  <img src="images/logoV2.png">
+                </a>
+              </div>
+          </div>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                {{#if user}}
+                  <li><a href='/dashboard/{{user.id}}'>Dashboard</a></li>
+                  <li><a href="/logout">Log Out</a></li>
+                {{else}}
+                  <li><a href='/login'>Log In</a></li>
+                  <li><a href="/registration">Create Account</a></li>
+                {{/if}}
+            </ul>
+          </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+  </nav>
+
+  <div class="registration">
+    <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+        <form class="form-horizontal" data-toggle="validator" role="form" method="POST">
+        <fieldset>
+
+        <!-- Form Name -->
+        <legend>User Registration</legend>
+
+        <!-- Username-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="username">Username</label>
+          <div class="col-md-9">
+          <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" required="">
+
+          </div>
+        </div>
+
+        <!-- Password-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="password">Password</label>
+          <div class="col-md-9">
+            <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
+
+          </div>
+        </div>
+
+        <!-- Password 2-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="password2">Confirm Password</label>
+          <div class="col-md-9">
+            <input id="password2" name="password2" type="password" placeholder="Confirm Password" class="form-control input-md" required="">
+
+          </div>
+        </div>
+
+        <!-- Email-->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="email">Email</label>
+          <div class="col-md-9">
+          <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md" required="">
+
+          </div>
+        </div>
+
+        <legend>Optional Information</legend>
+
+        <!-- Gender -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="gender">Gender</label>
+          <div class="col-md-4">
+            <select id="gender" name="gender" class="form-control">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Age Range -->
+        <div class="form-group">
+          <label class="col-md-3 control-label" for="age">Age Range</label>
+          <div class="col-md-9">
+            <label class="radio-inline" for="age-0">
+              <input type="radio" name="age" id="age-0" value="<18" checked="checked">
+              Under 18
+            </label>
+            <label class="radio-inline" for="age-1">
+              <input type="radio" name="age" id="age-1" value="18-21">
+              18 - 21
+            </label>
+            <label class="radio-inline" for="age-2">
+              <input type="radio" name="age" id="age-2" value="22-26">
+              22-26
+            </label>
+            <label class="radio-inline" for="age-3">
+              <input type="radio" name="age" id="age-3" value="27-35">
+              27-35
+            </label>
+            <label class="radio-inline" for="age-4">
+              <input type="radio" name="age" id="age-4" value=">36">
+              36 and older
+            </label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success">Register</button>
+        </div>
+
+        </fieldset>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>

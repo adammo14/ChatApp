@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MyProject</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/css/theme.css">
+</head>
+
+<body>
+
+  <section id="sideMenu">
+
+    <div class="navbar-left logo">
+      <a href="/">
+        <img src="/images/logoV2.png">
+      </a>
+    </div>
+
+    <nav id="dash-nav">
+      {{#compare user.gender "==" "male"}}
+        <img src="/images/avatar-man.png" class="avatar">
+      {{/compare}}
+
+      {{#compare user.gender "==" "female"}}
+        <img src="/images/avatar-woman.png" class="avatar">
+      {{/compare}}
+
+      <h4 class="text-center greeting">Hello {{user.username}}!</h4>
+
+      <a href="/dashboard/{{user.id}}"><i class="fa fa-user"></i> Personal Information</a>
+      <a href="/dashboard2/{{user.id}}" class="active"><i class="fa fa-puzzle-piece"></i> Matching Preferences</a>
+      <a href="/dashboard3/{{user.id}}"><i class="fa fa-wrench"></i> Website Settings</a>
+    </nav>
+  </section>
+
+  <header>
+    <div class="user-area">
+      <a type="button" data-toggle="modal" data-target=".bd-example-modal-sm" href="#" class="notification"><i class="fa fa-bell"></i><span class="circle">1</span></a>
+      <a href="/" class="close-btn"><i class="fa fa-window-close"></i></a>
+    </div>
+  </header>
+
+  <section id="content-area">
+    <div class="heading">
+      <h1>Dashboard</h1>
+      <p>Welcome to Personality Chat dashboard</p>
+    </div>
+
+    <!-- Personality test -->
+    <div class="card">
+      <div class="">
+        <form role="form" method="POST" action="/dashboard2/{{user._id}}">
+          <p class="tool-tip" id="test-title">Personality test <i class="fa fa-info-circle"></i>
+            <span class="tool-tip-text">This test will help us determine your perfect match.</span>
+          </p>
+
+          <p>I express my thoughts better in conversations than in writing.</p>
+          <label class="holder"><input type="radio" name="radiosQ1" value="1">Agree<span class="checkmark"></span></label><!-- Extrovert -->
+          <label class="holder"><input type="radio" name="radiosQ1" value="2">Disagree<span class="checkmark"></span></label><!-- Introvert -->
+          <label class="holder"><input type="radio" name="radiosQ1" value="1.5">Sometimes<span class="checkmark"></span></label><!-- Ambiviant -->
+
+          <p>Being alone is boring and depressing.</p>
+          <label class="holder"><input type="radio" name="radiosQ2" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ2" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ2" value="1.5">It depends<span class="checkmark"></span></label>
+
+          <p>When I have a conversation, I prefer to be light-hearted rather than practical or meaningful.</p>
+          <label class="holder"><input type="radio" name="radiosQ3" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ3" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ3" value="1.5">Sometimes<span class="checkmark"></span></label>
+
+          <p>The idea of living on a deserted island with no people is horrific.</p>
+          <label class="holder"><input type="radio" name="radiosQ4" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ4" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ4" value="1.5">It depends<span class="checkmark"></span></label>
+
+          <p>When I have a celebration I prefer to invite every person I can think of.</p>
+          <label class="holder"><input type="radio" name="radiosQ5" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ5" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ5" value="1.5">Occasionally<span class="checkmark"></span></label>
+
+          <p>When I speak, I say anything that comes to mind.</p>
+          <label class="holder"><input type="radio" name="radiosQ6" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ6" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ6" value="1.5">Usually<span class="checkmark"></span></label>
+
+          <p>When going out, I come back feeling energized and accomplished.</p>
+          <label class="holder"><input type="radio" name="radiosQ7" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ7" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ7" value="1.5">Now and then<span class="checkmark"></span></label>
+
+          <p>I find competition exciting and stimulating.</p>
+          <label class="holder"><input type="radio" name="radiosQ8" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ8" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ8" value="1.5">Sometimes<span class="checkmark"></span></label>
+
+          <p>When I remember my childhood, I see myself playing with and making new friends, running around, and talking too much.</p>
+          <label class="holder"><input type="radio" name="radiosQ9" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ9" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ9" value="1.5">I had my moments<span class="checkmark"></span></label>
+
+          <p> I like to describe myself as friendly, talkative and enthusiastic.</p>
+          <label class="holder"><input type="radio" name="radiosQ10" value="1">Agree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ10" value="2">Disagree<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ10" value="1.5">Sometimes<span class="checkmark"></span></label>
+
+          <hr class="style-one">
+
+          <p>I prefer talking to</p>
+          <label class="holder"><input type="radio" name="radiosQ11" value="male">Males<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="radiosQ11" value="female">Females<span class="checkmark"></span></label>
+
+          <div class="dash-btn">
+            <button type="submit" class="btn btn-success">APPLY CHANGES</button>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="position:absolute; top:60px; right:10px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">You have a new match!</h5>
+          <div class="open-chat">
+            <a href="/"><button type="button" class="btn btn-success">Open Chat</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script src="/js/script.js"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
