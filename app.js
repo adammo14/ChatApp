@@ -20,16 +20,6 @@ mongoose
     'useMongoClient': true
   });
 
-//check connection
-//db.once('open', function(){
-//  console.log('Connected to MongoDB');
-//})
-
-//check for db errors
-//db.on('error', function(err){
-//  console.log(err);
-//});
-
 const app = express();
 
 //static files
@@ -319,6 +309,3 @@ Handlebars.registerHelper('calculate', function(lvalue, operator, rvalue, option
 app.listen(PORT, function(){
   console.log('Server is active on port 9999...');
 });
-/*app.listen(9999, function(){
-  console.log('Server is active on port 9999...');
-});*/
