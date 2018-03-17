@@ -12,20 +12,23 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const config = require('./config/database');
 const PORT = process.env.PORT || 9999;
+const CONNECTION_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/chatApp';
 
 //connect to db
-mongoose.connect(config.database);
-let db = mongoose.connection;
+mongoose
+  .connect(CONNECTION_URI, {
+    'useMongoClient': true
+  });
 
 //check connection
-db.once('open', function(){
-  console.log('Connected to MongoDB');
-})
+//db.once('open', function(){
+//  console.log('Connected to MongoDB');
+//})
 
 //check for db errors
-db.on('error', function(err){
-  console.log(err);
-});
+//db.on('error', function(err){
+//  console.log(err);
+//});
 
 const app = express();
 
