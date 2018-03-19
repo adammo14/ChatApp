@@ -16,7 +16,13 @@ let BotSchema = mongoose.Schema({
   },
   personality:{
     type: String
-  }
+  },
+  personalityTraits:[{
+    type: String
+  }],
+  color:[{
+    type: String
+  }]
 });
 
 let Bot = module.exports = mongoose.model('Bot', BotSchema);

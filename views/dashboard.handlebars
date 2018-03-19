@@ -7,10 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>MyProject</title>
 
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link id="pagestyle" rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/css/theme.css">
+  <script "text/javascript" src="/js/script.js"></script>
 </head>
 
 <body>
@@ -58,24 +59,37 @@
         <form role="form" method="POST" action="/dashboard/{{user._id}}">
 
           <!-- Gender -->
-          <p>You are a...</p>
-          <input type="radio" id="male" value="male" name="gender" required/>
-          <label for="male">Male</label><br>
-          <input type="radio" id="female" value="female" name="gender" required/>
-          <label for="female">Female</label>
+          <p>I am a...</p>
+
+          <label class="holder"><input type="radio" name="gender" value="male">Male<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="gender" value="female">Female<span class="checkmark"></span></label>
 
           <!-- Age -->
           <p>Who is...</p>
-          <input type="radio" id="<18" value="<18" name="age"/>
-          <label for="<18">Under 18 years old</label><br>
-          <input type="radio" id="18-21" value="18-21" name="age"/>
-          <label for="18-21">18 - 21 years old</label><br>
-          <input type="radio" id="22-26" value="22-26" name="age"/>
-          <label for="22-26">22 - 26 years old</label><br>
-          <input type="radio" id="27-35" value="27-35" name="age"/>
-          <label for="27-35">27 - 35 years old</label><br>
-          <input type="radio" id=">35" value=">36" name="age"/>
-          <label for=">35">Over 35 years old</label><br>
+
+          <label class="holder"><input type="radio" name="age" value="<18">Under 18 years old<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="age" value="18-21">18 - 21 years old<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="age" value="22-26">22 - 26 years old<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="age" value="27-35">27 - 35 years old<span class="checkmark"></span></label>
+          <label class="holder"><input type="radio" name="age" value=">36">Over 35 years old<span class="checkmark"></span></label>
+
+          <!-- Favourite Colour -->
+          <p class="tool-tip">My favourite colour is...</p>
+          <label class="holder"><input type="radio" name="color" value="red">Red<span class="checkmark"></span></label>
+
+          <label class="holder"><input type="radio" name="color" value="blue">Blue<span class="checkmark"></span></label>
+
+          <label class="holder"><input type="radio" name="color" value="white">White<span class="checkmark"></span></label>
+
+          <label class="holder"><input type="radio" name="color" value="orange">Orange<span class="checkmark"></span></label>
+
+          <label class="holder"><input type="radio" name="color" value="green">Green<span class="checkmark"></span></label>
+
+          <label class="holder"><input type="radio" name="color" value="yellow">Yellow<span class="checkmark"></span></label>
+
+          <label class="holder"><input type="radio" name="color" value="purple">Purple<span class="checkmark"></span></label>
+
+          <label class="holder"><input type="radio" name="color" value="other">Other<span class="checkmark"></span></label>
 
           <!-- Image -->
           <p>Do you want to upload your photo?</p>

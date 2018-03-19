@@ -1,8 +1,16 @@
-var me = {};
-me.avatar = "https://lh6.googleusercontent.com/-lr2nyjhhjXw/AAAAAAAAAAI/AAAAAAAARmE/MdtfUmC0M4s/photo.jpg?sz=48";
+function swapStyleSheetNew(){
+	document.body.style.backgroundColor = "#AA0000";
+  console.log('it works');
+}
 
-var you = {};
-you.avatar = "https://a11.t26.net/taringa/avatares/9/1/2/F/7/8/Demon_King1/48x48_5C5.jpg";
+function swapStyleSheetOld(){
+	document.getElementById('1').style.color = white;
+  console.log('it works');
+}
+
+function changeStylesheet(newstylesheet){
+    document.getElementById('pagestyle').setAttribute('href', newstylesheet);
+}
 
 function formatAMPM(date) {
     var hours = date.getHours();
@@ -71,21 +79,3 @@ $('body > div > div > div > div > button').click(function(){
 
 //-- Print Messages
 insertChat("you", "HEEEY!!!", 1500);
-
-var box = document.getElementById("box");
-var button = document.getElementById("show-more");
-
-button.onClick = function(){
-  if(box.style.display == 'none'){
-    box.style.display = 'block';
-  }
-  else {
-    box.style.display = 'none';
-  }
-}
-
-$('.like, .dislike').on('click', function() {
-    event.preventDefault();
-    $('.active').removeClass('active');
-    $(this).addClass('active');
-});

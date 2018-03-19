@@ -23,6 +23,9 @@ let UserSchema = mongoose.Schema({
   },
   age:{
     type: String
+  },                  //Registration
+  color:{
+    type: String
   },
   personalityVal:{
     type: Number
@@ -30,8 +33,26 @@ let UserSchema = mongoose.Schema({
   personality:{
     type: String
   },
-  genderMatch:{
+  preferedGender:{
     type: String
+  },                  //Dashbord 2
+  nameMatch:{
+    type: String
+  },
+  personalityMatch:{
+    type: String
+  },
+  colorMatch:[{
+    type: String
+  }],
+  personalityMatchVal:{
+    type: Number
+  },
+  personalityMatchTraits:[{
+    type: String
+  }],
+  personalityTheme:{
+    type: Boolean
   }
 });
 

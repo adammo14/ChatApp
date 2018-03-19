@@ -11,14 +11,17 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const config = require('./config/database');
-const PORT = process.env.PORT || 9999;
-const CONNECTION_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/chatApp';
+const PORT = process.env.PORT || 9999;  //changes for hiroku
+const CONNECTION_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/chatApp';  //Changes for hiroku
 
 //connect to db
-mongoose
-  .connect(CONNECTION_URI, {
-    'useMongoClient': true
-  });
+mongoose.connect(CONNECTION_URI);
+let db = mongoose.connection;
+
+//check connection
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
 
 const app = express();
 
@@ -29,7 +32,7 @@ app.use('/js', express.static('js'));
 app.use('/fonts', express.static('fonts'));
 
 //set public folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 //express session middleware
 app.use(session({
@@ -91,17 +94,15 @@ let Bot = require('./models/bot');
 
 //home route
 app.get('/', function(req, res){
-  res.render('index');
+    res.render('index');
 });
 
 app.get('/login', function(req, res){
   res.render('login');
 });
 
-app.post('/login',
-  passport.authenticate('local', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/dashboard/:id');
+app.post('/login', function(req, res, next){
+  passport.authenticate('local', { successRedirect: '/dashboard/:id', failureRedirect: '/' })(req, res, next);
 });
 
 //logout
@@ -192,6 +193,7 @@ app.post('/dashboard/:id', function(req, res){
 
   user.gender = req.body.gender;
   user.age = req.body.age;
+  user.color = req.body.color;
 
   let query = {_id:req.params.id}
 
@@ -202,6 +204,24 @@ app.post('/dashboard/:id', function(req, res){
       res.redirect('/dashboard/:id');
     }
   });
+});
+
+app.post('/dashboard3/:id', function(req, res){
+  let user = {};
+
+  user.personalityTheme = req.body.switch;
+
+  let query = {_id:req.params.id}
+
+  User.update(query, user, function(err){
+    if (err){
+      console.log(err);
+    } else {
+      res.redirect('/dashboard3/:id');
+    }
+  })
+
+
 });
 
 //Personality test
@@ -221,16 +241,116 @@ app.post('/dashboard2/:id', function(req, res){
                         parseFloat(req.body.radiosQ9) +
                         parseFloat(req.body.radiosQ10);
 
-  user.genderMatch = req.body.radiosQ11;
+  user.preferedGender = req.body.radiosQ11;
 
-  if (user.personalityVal <= 13){
+  if (user.personalityVal <= 13.5){
     user.personality = 'Extrovert';
   }
-  else if (user.personalityVal >= 17){
+  else if (user.personalityVal >= 16.5){
     user.personality = 'Introvert';
   }
   else {
-    user.personality = 'Ambivient';
+    user.personality = 'Ambivert';
+  }
+
+  //matching
+  if(user.personality == "Introvert" && user.preferedGender == "male"){
+    Bot.findOne({"name":"Peter"}, function(err, bot){
+      if (err) throw err;
+      user.nameMatch = bot.name;
+      user.personalityMatch = bot.personality;
+      user.personalityMatchTraits = bot.personalityTraits;
+      user.colorMatch = bot.color;
+      user.personalityMatchVal = bot.personalityVal;
+
+      User.update(query, user, function(err){
+        if(err){
+        console.log(err);
+        }
+      });
+    });
+  }
+  else if(user.personality == "Introvert" && user.preferedGender == "female"){
+    Bot.findOne({"name":"Amy"}, function(err, bot){
+      if (err) throw err;
+      user.nameMatch = bot.name;
+      user.personalityMatch = bot.personality;
+      user.personalityMatchTraits = bot.personalityTraits;
+      user.colorMatch = bot.color;
+      user.personalityMatchVal = bot.personalityVal;
+
+      User.update(query, user, function(err){
+        if(err){
+        console.log(err);
+        }
+      });
+    });
+  }
+
+  else if(user.personality == "Extrovert" && user.preferedGender == "male"){
+    Bot.findOne({"name":"Paul"}, function(err, bot){
+      if (err) throw err;
+      user.nameMatch = bot.name;
+      user.personalityMatch = bot.personality;
+      user.personalityMatchTraits = bot.personalityTraits;
+      user.colorMatch = bot.color;
+      user.personalityMatchVal = bot.personalityVal;
+
+      User.update(query, user, function(err){
+        if(err){
+        console.log(err);
+        }
+      });
+    });
+  }
+  else if(user.personality == "Extrovert" && user.preferedGender == "female"){
+    Bot.findOne({"name":"Rachel"}, function(err, bot){
+      if (err) throw err;
+      user.nameMatch = bot.name;
+      user.personalityMatch = bot.personality;
+      user.personalityMatchTraits = bot.personalityTraits;
+      user.colorMatch = bot.color;
+      user.personalityMatchVal = bot.personalityVal;
+
+      User.update(query, user, function(err){
+        if(err){
+        console.log(err);
+        }
+      });
+    });
+  }
+
+  else if(user.personality == "Ambivert" && user.preferedGender == "male"){
+    Bot.findOne({"name":"Robert"}, function(err, bot){
+      if (err) throw err;
+      user.nameMatch = bot.name;
+      user.personalityMatch = bot.personality;
+      user.personalityMatchTraits = bot.personalityTraits;
+      user.colorMatch = bot.color;
+      user.personalityMatchVal = bot.personalityVal;
+
+      User.update(query, user, function(err){
+        if(err){
+        console.log(err);
+        }
+      });
+    });
+  }
+  else if(user.personality == "Ambivert" && user.preferedGender == "female"){
+    Bot.findOne({"name":"Daisy"}, function(err, bot){
+      if (err) throw err;
+      user.nameMatch = bot.name;
+      user.personalityMatch = bot.personality;
+      user.personalityMatchTraits = bot.personalityTraits;
+      user.colorMatch = bot.color;
+      user.personalityMatchVal = bot.personalityVal;
+
+      User.update(query, user, function(err){
+        if(err){
+        console.log(err);
+        }
+      });
+    });
   }
 
   let query = {_id:req.params.id}
@@ -238,7 +358,7 @@ app.post('/dashboard2/:id', function(req, res){
   User.update(query, user, function(err){
     if(err){
     console.log(err);
-    } else {
+    }else {
       res.redirect('/dashboard2/:id');
     }
   });
@@ -275,33 +395,6 @@ Handlebars.registerHelper('compare', function (lvalue, operator, rvalue, options
     } else {
         return options.inverse(this);
     }
-});
-
-Handlebars.registerHelper('calculate', function(lvalue, operator, rvalue, options){
-  var operators, result;
-  if(arguments.length < 3){
-    throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
-  }
-  if (options === undefined) {
-      options = rvalue;
-      rvalue = operator;
-      operator = "===";
-  }
-  operators = {
-    '+': function(l, r) {return l + r},
-    '-': function(l, r) {return l - r},
-    '*': function(l, r) {return l * r},
-    '/': function(l, r) {return l / r}
-  };
-  if (!operators[operator]) {
-      throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
-  }
-  result = operators[operator](lvalue, rvalue);
-  if (result) {
-      return options.fn(this);
-  } else {
-      return options.inverse(this);
-  }
 });
 
 //start server

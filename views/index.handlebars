@@ -7,11 +7,42 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>MyProject</title>
 
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link id="pagestyle" rel="stylesheet" type="text/css" href="/css/style.css">
+  {{#compare user.color "==" "blue"}}
+    {{#compare user.personalityTheme "==" true}}
+      <link id="pagestyle" rel="stylesheet" type="text/css" href="/css/blue.css"><!-- BLUE -->
+    {{/compare}}
+  {{/compare}}
+  {{#compare user.color "==" "red"}}
+    {{#compare user.personalityTheme "==" true}}
+      <link id="pagestyle" rel="stylesheet" type="text/css" href="/css/red.css"> <!-- RED -->
+    {{/compare}}
+  {{/compare}}
+  {{#compare user.color "==" "orange"}}
+    {{#compare user.personalityTheme "==" true}}
+      <link id="pagestyle" rel="stylesheet" type="text/css" href="/css/orange.css"> <!-- ORANGE -->
+    {{/compare}}
+  {{/compare}}
+  {{#compare user.color "==" "green"}}
+    {{#compare user.personalityTheme "==" true}}
+      <link id="pagestyle" rel="stylesheet" type="text/css" href="/css/green.css"> <!-- GREEN -->
+    {{/compare}}
+  {{/compare}}
+  {{#compare user.color "==" "yellow"}}
+    {{#compare user.personalityTheme "==" true}}
+      <link id="pagestyle" rel="stylesheet" type="text/css" href="/css/yellow.css"> <!-- YELLOW -->
+    {{/compare}}
+  {{/compare}}
+  {{#compare user.color "==" "purple"}}
+    {{#compare user.personalityTheme "==" true}}
+      <link id="pagestyle" rel="stylesheet" type="text/css" href="/css/purple.css"> <!-- PURPLE -->
+    {{/compare}}
+  {{/compare}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="/css/theme.css">
+  <script "text/javascript" src="/js/script.js"></script>
 </head>
 
 <body>
@@ -46,63 +77,22 @@
           </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
   </nav>
-
+  <div class="main-wrapper">
   {{#if user}}
 
     <div class="container">
       <div class="col-md-10">
-        <div class="chat-canvas"><!-- grey background of the chat container -->
+        <div class="chat-canvas" id="chat-canvas"><!-- grey background of the chat container -->
           <ul class="chat-msg">
             <li class="them" style="width:calc(100% - 40px);list-style-type:none;float:left;margin-top:10px;">
               <div class="macro">
                 <div class="text text-r">
                   <h4>
-                    You've been matched with:
-                    {{#compare user.personality "==" "Introvert"}}  <!-- Introvert 2-->
-
-                      {{#compare user.genderMatch "==" "male"}}
-                        <strong>Peter</strong>
-                        <p>Things you have in common:</p>
-                        <ol>
-                          Personality type: <strong>{{user.personality}}</strong>
-                        </ol>
-                        <ol>
-                          Personality value:
-                          {{#calculate user.personalityVal "+" user.personalityVal}}
-                            
-                          {{/calculate}}
-                        </ol>
-                      {{/compare}}
-
-                      {{#compare user.genderMatch "==" "female"}}
-                        <strong>Amy</strong>
-                      {{/compare}}
-
-                    {{/compare}}
-
-                    {{#compare user.personality "==" "Extrovert"}}  <!-- Extrovert 1-->
-
-                      {{#compare user.genderMatch "==" "male"}}
-                        <strong>Paul</strong>
-                      {{/compare}}
-
-                      {{#compare user.genderMatch "==" "female"}}
-                        <strong>Rachel</strong>
-                      {{/compare}}
-
-                    {{/compare}}
-
-                    {{#compare user.personality "==" "Ambivient"}}  <!-- Ambivient 1.5-->
-
-                      {{#compare user.genderMatch "==" "male"}}
-                        <strong>Robert</strong>
-                      {{/compare}}
-
-                      {{#compare user.genderMatch "==" "female"}}
-                        <strong>Daisy</strong>
-                      {{/compare}}
-
-                    {{/compare}}
+                    You've been matched with: <strong>{{user.nameMatch}}</strong>
+                      <ol>Personality: <strong>{{user.personalityMatch}}</strong></ol>
+                      <ol>Personality traits: <strong>{{user.personalityMatchTraits}}</strong></ol>
+                      <ol>Favourite color: <strong>{{user.colorMatch}}</strong></ol>
+                      <ol>Match closeness: Your score:&nbsp;<strong>{{user.personalityVal}}</strong>&nbsp;{{user.nameMatch}} score:&nbsp;<strong>{{user.personalityMatchVal}}</strong></ol>
                   </h4>
 
                 </div>
@@ -168,14 +158,14 @@
   <div class="steps text-center">
     <div class="container">
       <div class="col-md-12">
-        <h1>Step 1:</h1>
-        <p><a href='#' data-toggle="modal">Register</a></p>
-        <h1>Step 2:</h1>
-        <p>Log in to your account</p>
-        <h1>Step 3:</h1>
+        <h2>Step 1:</h2>
+        <p><a href='/registration'>Register</a></p>
+        <h2>Step 2:</h2>
+        <p><a href="/login">Log in to your account</a></p>
+        <h2>Step 3:</h2>
         <p>Change matching preferences in your dashboard</p>
-        <h1>Step 4:</h1>
-        <p>Hit the search button!</p>
+        <h2>Step 4:</h2>
+        <p>Get matched up with a person who's personality resembles yours.</p>
         <button type="button" class="btn btn-success button-start">Start</button>
       </div>
     </div>
@@ -235,7 +225,7 @@
   </div>
 
   {{/if}}
-
+</div>
 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
